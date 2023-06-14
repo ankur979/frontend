@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import { getUser } from "../slice/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getAllProduct } from '../slice/productSlice';
 
 const Nevbar = () => {
     const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Nevbar = () => {
     const token = localStorage.getItem("token")
     useEffect(() => {
         dispatch(getUser(token))
+        dispatch(getAllProduct(token))
         // eslint-disable-next-line
     }, [token])
     return (
