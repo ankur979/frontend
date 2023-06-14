@@ -3,8 +3,6 @@ import axios from "axios";
 const link = process.env.REACT_APP_BACKEND_URL
 
 
-const token = localStorage.getItem("token")
-
 const userSlice = createSlice({
     name: "user",
     initialState: [],
@@ -48,7 +46,7 @@ export const loginUser = (email, password) => async (dispatch) => {
     }
 }
 
-export const getUser = () => async (dispatch) => {
+export const getUser = (token) => async (dispatch) => {
     try {
         const { data } = await axios.get(`${link}/getUser`, {
             headers: {

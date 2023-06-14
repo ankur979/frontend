@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const link = process.env.REACT_APP_BACKEND_URL;
 
-const token = localStorage.getItem("token")
+
 
 const productSlice = createSlice({
     name: "product",
@@ -22,6 +22,7 @@ const productSlice = createSlice({
 
 
 export const createProduct = (title, category, price, quantity, description) => async (dispatch) => {
+    const token = localStorage.getItem("token")
     try {
         const { data } = await axios.post(`${link}/product/create`, {
             title, category, price, quantity, description
@@ -39,7 +40,7 @@ export const createProduct = (title, category, price, quantity, description) => 
     }
 }
 
-export const getAllProduct = () => async (dispatch) => {
+export const getAllProduct = (token) => async (dispatch) => {
     try {
         const { data } = await axios.get(`${link}/product/get`, {
             headers: {
@@ -54,6 +55,7 @@ export const getAllProduct = () => async (dispatch) => {
 }
 
 export const deleteProduct = (id) => async (dispatch) => {
+    const token = localStorage.getItem("token")
     try {
         const { data } = await axios.delete(`${link}/product/delete/${id}`, {
             headers: {
@@ -69,6 +71,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 }
 
 export const updateProduct = (id, status) => async (dispatch) => {
+    const token = localStorage.getItem("token")
     try {
         const { data } = await axios.put(`${link}/product/update`, {
             id,

@@ -1,13 +1,27 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom"
-const Nevbar = ({ user }) => {
+import { getUser } from "../slice/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+const Nevbar = () => {
+    const dispatch = useDispatch();
+    const user = useSelector((s) => s.user)
     const navigate = useNavigate()
+
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (!token) {
             navigate("/login")
         }
         // eslint-disable-next-line 
+    }, [])
+
+
+
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        dispatch(getUser(token))
+        // eslint-disable-next-line
     }, [])
     return (
         <>

@@ -4,7 +4,7 @@ import { deleteProduct, getAllProduct, updateProduct } from '../slice/productSli
 import "./modal.css"
 
 const Dashboard = () => {
-  const product = useSelector((s) => s.product)
+  let product = useSelector((s) => s.product)
 
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState(true);
@@ -21,7 +21,12 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    dispatch(getAllProduct())
+    try {
+      const token = localStorage.getItem("token")
+      dispatch(getAllProduct(token))
+    } catch (error) {
+      
+    }
   }, [dispatch])
 
   const openModal = (id) => {
@@ -52,7 +57,7 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {product && product.map((p) => {
+              {product.map((p) => {
                 return (
                   <tr key={p._id}>
                     <th>{p.title}</th>
