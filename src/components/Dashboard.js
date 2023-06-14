@@ -20,14 +20,10 @@ const Dashboard = () => {
     }
   }
 
+  const token = localStorage.getItem("token")
   useEffect(() => {
-    try {
-      const token = localStorage.getItem("token")
-      dispatch(getAllProduct(token))
-    } catch (error) {
-      
-    }
-  }, [dispatch])
+    dispatch(getAllProduct(token))
+  }, [dispatch, token])
 
   const openModal = (id) => {
     setProductId(id)
