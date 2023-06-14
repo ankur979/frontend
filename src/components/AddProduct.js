@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from "react-redux"
 import { createProduct } from '../slice/productSlice';
 import { useNavigate } from 'react-router-dom';
@@ -13,12 +13,20 @@ const AddProduct = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if(!token){
+            navigate("/login")
+        }
+        // eslint-disable-next-line 
+    }, [])
+
     const submitHandler = (e) => {
         e.preventDefault();
-      const success =  dispatch(createProduct(title,category,Number(price),Number(quantity),description))
-    if(success){
-        navigate("/")
-    }
+        const success = dispatch(createProduct(title, category, Number(price), Number(quantity), description))
+        if (success) {
+            navigate("/")
+        }
     }
     return (
         <div className="container m-5">
