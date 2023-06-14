@@ -18,11 +18,11 @@ const Nevbar = () => {
 
 
 
+    const token = localStorage.getItem("token")
     useEffect(() => {
-        const token = localStorage.getItem("token")
         dispatch(getUser(token))
         // eslint-disable-next-line
-    }, [])
+    }, [token])
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">

@@ -25,7 +25,9 @@ const Register = () => {
         e.preventDefault();
         success = await dispatch(registerUser(name, email, password))
         if (success) {
-            navigate("/")
+            setTimeout(() => {
+                navigate("/")
+            }, 5000);
         }
     }
     return (

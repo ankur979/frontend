@@ -22,7 +22,9 @@ const Login = () => {
         e.preventDefault();
         success = await dispatch(loginUser(email, password))
         if (success) {
-            navigate("/")
+            setTimeout(() => {
+                navigate("/")
+            }, 5000);
         }
     }
     return (
