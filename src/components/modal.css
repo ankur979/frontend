@@ -1,0 +1,35 @@
+.modal-box{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(239, 239, 240, 0.94);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.model-div{
+    width: 30vmax;
+    height: 10vmax;
+    padding: 2vmax;
+}
+.modal-content{
+    padding: 1vmax;
+}
+select{
+    margin: 1vmax 0;
+    background-color: aqua;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.modal-button{
+text-align: end;
+}
+
+.modal-button button{
+    margin-left: 1vmax;
+}
