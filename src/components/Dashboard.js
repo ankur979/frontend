@@ -15,7 +15,8 @@ const Dashboard = () => {
   const updateProductHandler = async () => {
     const success = await dispatch(updateProduct(productId, status))
     if (success) {
-      dispatch(getAllProduct())
+      const token = localStorage.getItem("token")
+      dispatch(getAllProduct(token))
       setIsOpen(false);
     }
   }
